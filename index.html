@@ -3,9 +3,42 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Teddy's Site</title>
+		<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+		<script type='text/JavaScript' src='js/main.js'></script>
 	</head>
 	<body>
-		<p>This is my site</p>
-		<h3>and this is a test!</h3>
+		<!--<div class='projects'>
+			<ul>
+				<li><a href='projects/gcb.html'>Gravity Calculator!</a></li>
+			</ul>
+		</div>-->
+		<div class='menu'>
+			<h3>Check your selections</h3>
+			<!--
+			
+			PASTE MENU BELOW HERE
+			
+			-->
+			<input type='checkbox' id='pizzaCheck'><label>Pizza</label><br>
+			<input type='checkbox' id='wrapCheck'><label>Wrap</label><br>
+			<input type='checkbox' id='icecreamCheck'><label>Icecream</label><br>
+			<input type='checkbox' id='waterCheck'><label>Water</label><br>
+			<input type='checkbox' id='chipsCheck'><label>Chips</label><br>
+			<input type='checkbox' id='candyCheck'><label>Candy</label><br>
+			<input type='checkbox' id='saladCheck'><label>Salad</label><br>
+			<input type='checkbox' id='appleCheck'><label>Apple</label><br>
+			<input type='checkbox' id='cookieCheck'><label>Cookie</label><br>
+			<input type='checkbox' id='gatoradeCheck'><label>Gatorade</label><br>
+			<!--
+			
+			END MENU
+			
+			-->
+			<div class='submit'>
+			<button type='submit' onclick='makeOrder()'>Submit Order</button>
+			</div>
+			<div class='order'></div>
+			<div class='confirm'></div>
+		</div>
 	</body>
 </html>

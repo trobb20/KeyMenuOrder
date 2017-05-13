@@ -1,0 +1,166 @@
+<html><head>
+<script type="text/javascript">
+function calculator()
+{
+var mass1 = document.getElementById("mass1").value
+var mass2 = document.getElementById("mass2").value
+var distance = document.getElementById("distance").value
+var calculate = function(mass1, mass2, distance) {
+    var Fg = (6.67)*(Math.pow(10,-11))*(mass1)*(mass2)/Math.pow((distance),2);
+    if(Fg > 10000 || Fg < 0.00001) {
+        FgFinal = Fg.toExponential(3)
+    }
+    else {
+        FgFinal = Fg.toFixed(4)
+    }
+    alert("The Force of gravity is about: " + FgFinal +" N");
+};
+calculate(mass1, mass2, distance);
+}
+function weightCalculatorLBS() {
+    var calculateWeightLBS = function(Fg) {
+        WeightLBS = Fg/4.45;
+        finalWeightLBS = WeightLBS.toFixed(3);
+        alert("Your weight on this celestial body is: "+ finalWeightLBS+ " lbs");
+    }
+calculateWeightLBS(FgFinal);
+}
+function weightCalculatorKG() {
+    var calculateWeightKG = function(Fg) {
+        WeightKG = Fg/9.8;
+        finalWeightKG = WeightKG.toFixed(3);
+        alert("Your weight on this celestial body is: "+ finalWeightKG+ " kg");
+    }
+calculateWeightKG(FgFinal);
+}
+function presetPlanetFg(){
+    function Planet(mass, radius){
+        this.mass = mass;
+        this.radius = radius;
+    }
+    var mercury = new Planet(328500000000000000000000, 2439000);
+    var venus = new Planet(4867000000000000000000000, 6052000);
+    var earth = new Planet(5972000000000000000000000, 6371000);
+    var mars = new Planet(639000000000000000000000, 3390000);
+    var jupiter = new Planet(1898000000000000000000000000, 69911000);
+    var saturn = new Planet(568300000000000000000000000,58232000);
+    var uranus = new Planet(86800000000000000000000000, 25362000);
+    var neptune = new Planet(102400000000000000000000000,24622000);
+    var pluto = new Planet(13090000000000000000000,1184000);
+    var ppMass = document.getElementById("ppMass").value;
+    var inputPlanet = document.getElementById("planet").value;
+    var calculatePresetPlanetFg = function(mass1, mass2, distance) {
+        var ppFg = (6.67)*(Math.pow(10,-11))*(mass1)*(mass2)/Math.pow((distance),2);
+        if(ppFg > 10000 || ppFg < 0.00001) {
+            ppFgFinal = Fg.toExponential(3)
+        }
+        else {
+            ppFgFinal = ppFg.toFixed(4)
+        }
+        alert("The Force of gravity on this planet is about: " + ppFgFinal +" N");
+    };
+    if(inputPlanet.toLowerCase() === "mercury"){
+        calculatePresetPlanetFg(ppMass, mercury.mass, mercury.radius);
+    }
+    else if(inputPlanet.toLowerCase() === "venus") {
+        calculatePresetPlanetFg(ppMass, venus.mass, venus.radius);
+    }    
+    else if(inputPlanet.toLowerCase() === "earth") {
+        calculatePresetPlanetFg(ppMass, earth.mass, earth.radius);
+    }
+    else if(inputPlanet.toLowerCase() === "mars") {
+        calculatePresetPlanetFg(ppMass, mars.mass, mars.radius);
+    }
+    else if(inputPlanet.toLowerCase() === "jupiter") {
+        calculatePresetPlanetFg(ppMass, jupiter.mass, jupiter.radius);
+    }
+    else if(inputPlanet.toLowerCase() === "saturn") {
+        calculatePresetPlanetFg(ppMass, saturn.mass, saturn.radius);
+    }
+    else if(inputPlanet.toLowerCase() === "uranus") {
+        calculatePresetPlanetFg(ppMass, uranus.mass, uranus.radius);
+    }
+    else if(inputPlanet.toLowerCase() === "neptune") {
+        calculatePresetPlanetFg(ppMass, neptune.mass, neptune.radius);
+    }
+    else if(inputPlanet.toLowerCase() === "pluto") {
+        calculatePresetPlanetFg(ppMass, pluto.mass, pluto.radius);
+    }
+    else {
+        alert("Unable to identify a planet. Did you spell the planet right?");
+    }
+}
+function presetPlanetWeightLBS(){
+    var calculatePresetPlanetWeightLBS = function (Fg) {
+        var ppWeightLBS = Fg/4.45
+        var ppfinalWeightLBS = ppWeightLBS.toFixed(3)
+        alert("Your weight on this celestial body is: "+ ppfinalWeightLBS+ " lbs");
+    }
+    calculatePresetPlanetWeightLBS(ppFgFinal)
+}
+function presetPlanetWeightKG(){
+    var calculatePresetPlanetWeightKG = function (Fg) {
+        var ppWeightKG = Fg/9.8
+        var ppfinalWeightKG = ppWeightKG.toFixed(3)
+        alert("Your weight on this celestial body is: "+ ppfinalWeightKG+ " kg");
+    }
+    calculatePresetPlanetWeightKG(ppFgFinal)
+}
+function weightToMass() {
+    var weight = document.getElementById("Weight").value
+    var calculateWeightToMass = function (weight){
+        var mass = weight/9.8;
+        alert("The Mass is equal to: "+mass+" Kg");
+    } 
+    calculateWeightToMass(weight);
+}
+</script>
+</head>
+<body>
+<form>
+First Mass (Kg):<br>
+<input type="number" name="mass1" id="mass1">
+<br>
+Second Mass (Kg):<br>
+<input type="number" name="mass2" id="mass2">
+<br>
+Distance (m):<br>
+<input type="number" name="distance" id="distance">
+</form>
+<button type="button" onclick="calculator()">Click to Calculate Fg!</button> <br>
+<button type="button" onclick="weightCalculatorLBS()">Click to Calculate Weight! (lbs)</button> <br>
+<button type="button" onclick="weightCalculatorKG()">Click to Calculate Weight! (kg)</button>
+<br>
+_____________________________
+<br><br>
+Quick Tip: If you are inputting scientific notation write it like this: <br>
+1.23e3 (1.23 x 10<sup>3</sup>)
+<br><br>
+Also, Make sure to calculate Fg before Weight
+<br><br>
+_____________________________
+<form>
+Choose Preset Planet:<br>
+<input type="text" name="planet" id="planet" value="ex. Jupiter">
+<br>
+Enter Subject Mass (kg): <br>
+<input type="text" name="ppMass" id="ppMass" value="ex. 50">
+</form>
+
+
+<button type="button" onclick="presetPlanetFg()">Click to Calculate Preset Planet Fg!</button> <br>
+<button type="button" onclick="presetPlanetWeightLBS()">Click to Calculate Preset Planet Weight! (lbs)</button>
+<br>
+<button type="button" onclick="presetPlanetWeightKG()">Click to Calculate Preset Planet Weight! (kg)</button><br>
+_____________________________<br>
+Convert Weight to Mass<br>
+<form>
+Enter Weight (N):<br>
+<input type="number" name="Weight" id="Weight">
+<br>
+</form>
+<button type='button' onclick='weightToMass()'>Click to Convert!</button>
+<br>
+<br>
+<a href='../index.html'>Go back!</a>
+</body></html>
