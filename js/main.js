@@ -7,7 +7,7 @@ VARIABLES
 var order;
 var email;
 var number;
-var dataList=[];
+//var dataList=[];
 var signIn = false;
 /*
 
