@@ -8,7 +8,6 @@ var order;
 var email;
 var number;
 var dataList=[];
-var menu = [];
 var signIn = false;
 /*
 
@@ -17,18 +16,18 @@ INIT
 */
 function init(){
 	$('.menu').hide();
-	
+	/*
 	$.ajax({
 		url:'menu.txt',
 		success: function (data){
 			dataList=data.split('\n');
 			};
 		}
-	});
+	});*/
 }
 $(document).ready(init);
 
-alert(dataList);
+//alert(dataList);
 
 /*
 Classes
