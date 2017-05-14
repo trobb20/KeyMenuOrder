@@ -112,19 +112,11 @@ function makeOrder(){
 
 function confirmOrder(){
 	
-	//alert('order confirmed');
+	alert("Your order of "+order.list()+" was confirmed for "+order.frontEnd);
 	
 	//OUTPUT DATA TO DATA.TXT
 	
 	var dataToBeSent = order.frontEnd+':'+order.list()
-	
-	$.ajax({
-		dataType: 'text',
-		url: "http://getsimpleform.com/messages/ajax?form_api_token=3004b06230bb2e694ab61b606d8d2be1",
-		data: dataToBeSent
-	}).done(function () {
-		alert("Your order of "+order.list()+" was confirmed for "+order.frontEnd);
-	})
 	
 }
 
