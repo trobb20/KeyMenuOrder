@@ -1,0 +1,10 @@
+pizza,2
+wrap,1.5
+icecream,0.5
+water,2
+chips,1.75
+candy,0.75
+salad,2.5
+apple,1.5
+cookie,1
+gatorade,2

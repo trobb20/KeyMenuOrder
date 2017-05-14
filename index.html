@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<title>Teddy's Site</title>
+		<link rel='stylesheet' type='text/css' href='css/main.css'>
 		<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
 		<script type='text/JavaScript' src='js/main.js'></script>
 	</head>
@@ -12,6 +13,11 @@
 				<li><a href='projects/gcb.html'>Gravity Calculator!</a></li>
 			</ul>
 		</div>-->
+		<div class='signin'>
+			<h2>Sign in with key school email here<h2>
+			<input type='text' id='email'>
+			<button onclick='submitEmail()'>Submit Email</button>
+		</div>
 		<div class='menu'>
 			<h3>Check your selections</h3>
 			<!--
@@ -19,16 +25,16 @@
 			PASTE MENU BELOW HERE
 			
 			-->
-			<input type='checkbox' id='pizzaCheck'><label>Pizza</label><br>
-			<input type='checkbox' id='wrapCheck'><label>Wrap</label><br>
-			<input type='checkbox' id='icecreamCheck'><label>Icecream</label><br>
-			<input type='checkbox' id='waterCheck'><label>Water</label><br>
-			<input type='checkbox' id='chipsCheck'><label>Chips</label><br>
-			<input type='checkbox' id='candyCheck'><label>Candy</label><br>
-			<input type='checkbox' id='saladCheck'><label>Salad</label><br>
-			<input type='checkbox' id='appleCheck'><label>Apple</label><br>
-			<input type='checkbox' id='cookieCheck'><label>Cookie</label><br>
-			<input type='checkbox' id='gatoradeCheck'><label>Gatorade</label><br>
+			<label>Pizza</label><input type='number' id='pizzaNum' value='0'><br>
+			<label>Wrap</label><input type='number' id='wrapNum' value='0'><br>
+			<label>Icecream</label><input type='number' id='icecreamNum' value='0'><br>
+			<label>Water</label><input type='number' id='waterNum' value='0'><br>
+			<label>Chips</label><input type='number' id='chipsNum' value='0'><br>
+			<label>Candy</label><input type='number' id='candyNum' value='0'><br>
+			<label>Salad</label><input type='number' id='saladNum' value='0'><br>
+			<label>Apple</label><input type='number' id='appleNum' value='0'><br>
+			<label>Cookie</label><input type='number' id='cookieNum' value='0'><br>
+			<label>Gatorade</label><input type='number' id='gatoradeNum' value='0'><br>
 			<!--
 			
 			END MENU

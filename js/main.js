@@ -1,7 +1,38 @@
-var order;
 
-function Order(items){
+/*
+
+VARIABLES
+
+*/
+var order;
+var email;
+var number;
+var dataList=[];
+var menu = [];
+var signIn = false;
+/*
+
+INIT
+
+*/
+function init(){
+	$('.menu').hide();
+	
+	$.ajax({
+		url:'menu.txt',
+		success: function (data){
+			dataList=data.split('\n');
+			};
+		}
+	});
+}
+$(document).ready(init)
+/*
+Classes
+*/
+function Order(items, email){
 	this.items=items
+	this.email=email
 	this.calcTotal = function(){
 		var itemsLength = items.length;
 		var total = 0;
@@ -24,11 +55,11 @@ function Item(name, price){
 	this.price=price;
 }
 
+
 /*
 
 PASTE MENU INFO BELOW HERE
 
-*/
 
 var pizza = new Item("pizza",2.0);
 var wrap = new Item("wrap",1.5);
@@ -48,21 +79,29 @@ END MENU INFO
 
 */
 
+function submitEmail(){
+	signIn=true;
+	$('.menu').fadeIn(1000);
+	email=document.getElementById('email').value;
+}
+
 function makeOrder(){
 	var items = [];
 	for(var i = 0; i<menu.length; i++){
-		if(document.getElementById(menu[i].name+'Check').checked){
-			items.push(menu[i]);
+		number = document.getElementById(menu[i].name+'Num').value;
+		//alert(number);
+		if(number > 0){
+			for(var j = 1; j<=number; j++){
+				items.push(menu[i]);}
 		}
 	}
-	order = new Order(items)
+	//alert(items[0].name);
+	order = new Order(items, email);
 	$('.order').html('You ordered: '+order.list()+'. <br> That totals: $'+order.calcTotal());
 	$('.confirm').html('<button onclick="confirmOrder()">Confirm Order</button>');
 }
 
 function confirmOrder(){
-	alert("Your order of "+order.list()+" was confirmed.");
+	alert("Your order of "+order.list()+" was confirmed for "+order.email);
 }
-
-
 
