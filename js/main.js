@@ -7,6 +7,7 @@ VARIABLES
 var order;
 var email;
 var number;
+var frontEnd;
 var menu = [];
 var signIn = false;
 /*
@@ -14,9 +15,9 @@ var signIn = false;
 CLASSES
 
 */
-function Order(items, email){
+function Order(items, frontEnd){
 	this.items=items
-	this.email=email
+	this.frontEnd=frontEnd
 	this.calcTotal = function(){
 		var itemsLength = items.length;
 		var total = 0;
@@ -62,6 +63,7 @@ function makeMenu(dataList){
 }
 function init(){
 	$('.menu').hide();
+	$('.confirm').hide();
 	
 	$.ajax({
 		url:'menu.txt',
@@ -82,9 +84,16 @@ FUNCTIONS
 
 */
 function submitEmail(){
-	signIn=true;
-	$('.menu').fadeIn(1000);
 	email=document.getElementById('email').value;
+	var backEnd = email.substr(email.length-14,email.length-1);
+	frontEnd = email.substr(0,email.length-14);
+	if (backEnd==='@keyschool.org'){
+		signIn=true;
+		$('.menu').fadeIn(1000);
+	}
+	else {
+		alert("Invalid email. Make sure it ends with '@keyschool.org'. Please retype and hit submit email.");
+	}
 }
 
 function makeOrder(){
@@ -96,13 +105,27 @@ function makeOrder(){
 				items.push(menu[i]);}
 		}
 	}
-	order = new Order(items, email);
+	order = new Order(items, frontEnd);
 	$('.order').html('You ordered: '+order.list()+'. <br> That totals: $'+order.calcTotal());
-	$('.confirm').html('<button onclick="confirmOrder()">Confirm Order</button>');
+	$('.confirm').show();
 }
 
 function confirmOrder(){
-	alert("Your order of "+order.list()+" was confirmed for "+order.email);
+	
+	//alert('order confirmed');
+	
+	//OUTPUT DATA TO DATA.TXT
+	
+	var dataToBeSent = order.frontEnd+':'+order.list()
+	
+	$.ajax({
+		dataType: 'text',
+		url: "http://getsimpleform.com/messages/ajax?form_api_token=3004b06230bb2e694ab61b606d8d2be1",
+		data: dataToBeSent
+	}).done(function () {
+		alert("Your order of "+order.list()+" was confirmed for "+order.frontEnd);
+	})
+	
 }
 
 
