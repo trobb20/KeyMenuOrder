@@ -26,7 +26,10 @@ function init(){
 		}
 	});
 }
-$(document).ready(init)
+$(document).ready(init);
+
+alert(dataList);
+
 /*
 Classes
 */
@@ -60,7 +63,7 @@ function Item(name, price){
 
 PASTE MENU INFO BELOW HERE
 
-
+*/
 var pizza = new Item("pizza",2.0);
 var wrap = new Item("wrap",1.5);
 var icecream = new Item("icecream",0.5);
