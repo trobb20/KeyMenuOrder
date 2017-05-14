@@ -7,30 +7,12 @@ VARIABLES
 var order;
 var email;
 var number;
-//var dataList=[];
+var menu = [];
 var signIn = false;
 /*
 
-INIT
+CLASSES
 
-*/
-function init(){
-	$('.menu').hide();
-	/*
-	$.ajax({
-		url:'menu.txt',
-		success: function (data){
-			dataList=data.split('\n');
-			};
-		}
-	});*/
-}
-$(document).ready(init);
-
-//alert(dataList);
-
-/*
-Classes
 */
 function Order(items, email){
 	this.items=items
@@ -56,31 +38,49 @@ function Item(name, price){
 	this.name=name;
 	this.price=price;
 }
-
-
 /*
 
-PASTE MENU INFO BELOW HERE
+INIT
 
 */
-var pizza = new Item("pizza",2.0);
-var wrap = new Item("wrap",1.5);
-var icecream = new Item("icecream",0.5);
-var water = new Item("water",2.0);
-var chips = new Item("chips",1.75);
-var candy = new Item("candy",0.75);
-var salad = new Item("salad",2.5);
-var apple = new Item("apple",1.5);
-var cookie = new Item("cookie",1.0);
-var gatorade = new Item("gatorade",2.0);
-var menu = [pizza, wrap, icecream, water, chips, candy, salad, apple, cookie, gatorade];
-
+function makeMenu(dataList){
+	for(var i = 0; i<dataList.length;i++){
+		var objList = dataList[i].split(',')
+		var name = objList[0];
+		var price = parseFloat(objList[1]);
+		window[name]=new Item(name, price);
+		menu.push(window[name]);
+	}
+	
+	var htmlString='';
+	
+	for(var i = 0;i<menu.length;i++){
+		htmlString=htmlString+'<label>'+menu[i].name+'</label><input type="number" id="'+menu[i].name+'Num" value="0"><br>';
+	}
+	
+	$('.menuHTML').html(htmlString);
+}
+function init(){
+	$('.menu').hide();
+	
+	$.ajax({
+		url:'menu.txt',
+		success: function (data){
+			var dataList=data.split('\n');
+			//alert('success')
+			makeMenu(dataList)
+			//parse your data here
+			//you can split into lines using data.split('\n') 
+			//an use regex functions to effectively parse it
+		}
+	});
+}
+$(document).ready(init);
 /*
 
-END MENU INFO
+FUNCTIONS
 
 */
-
 function submitEmail(){
 	signIn=true;
 	$('.menu').fadeIn(1000);
@@ -91,13 +91,11 @@ function makeOrder(){
 	var items = [];
 	for(var i = 0; i<menu.length; i++){
 		number = document.getElementById(menu[i].name+'Num').value;
-		//alert(number);
 		if(number > 0){
 			for(var j = 1; j<=number; j++){
 				items.push(menu[i]);}
 		}
 	}
-	//alert(items[0].name);
 	order = new Order(items, email);
 	$('.order').html('You ordered: '+order.list()+'. <br> That totals: $'+order.calcTotal());
 	$('.confirm').html('<button onclick="confirmOrder()">Confirm Order</button>');
@@ -106,4 +104,6 @@ function makeOrder(){
 function confirmOrder(){
 	alert("Your order of "+order.list()+" was confirmed for "+order.email);
 }
+
+
 
