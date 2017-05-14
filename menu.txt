@@ -1,6 +1,7 @@
 pizza,2
-wrap,1.5
-icecream,0.5
-water,2
-chips,1.75
-candy,0.75
+pizzaPepperoni,2.5
+drink,1.5
+chips,1.5
+salad,2
+wrap,2
+cookie,1
