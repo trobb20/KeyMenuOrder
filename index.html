@@ -2,9 +2,37 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>Teddy's Website</title>
+		<title>Teddy's Site</title>
+		<link rel='stylesheet' type='text/css' href='css/main.css'>
+		<script src='https://code.jquery.com/jquery-3.1.0.min.js'></script>
+		<script type='text/JavaScript' src='js/main.js'></script>
 	</head>
 	<body>
-		<p>test</p>
+		<div class='signin'>
+			<h2>Sign in with key school email here<h2>
+			<input type='text' id='email'>
+			<button onclick='submitEmail()'>Submit Email</button>
+		</div>
+		<div class='menu'>
+			<h3>Check your selections</h3>
+			<!--
+			
+			PASTE MENU BELOW HERE
+			
+			-->
+			<div class='menuHTML'>
+			</div>
+			<!--
+			
+			END MENU
+			
+			-->
+			<div class='submit'>
+			<button type='submit' onclick='makeOrder()'>Submit Order</button>
+			</div>
+			<div class='order'></div>
+			<div class='confirm'><button onclick="confirmOrder()">Confirm Order</button></div>
+					
+		</div>
 	</body>
 </html>

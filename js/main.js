@@ -112,11 +112,20 @@ function makeOrder(){
 
 function confirmOrder(){
 	
-	alert("Your order of "+order.list()+" was confirmed for "+order.frontEnd);
-	
 	//OUTPUT DATA TO DATA.TXT
 	
 	var dataToBeSent = order.frontEnd+':'+order.list()
+	
+	$.ajax({
+		dataType: "text",
+		url: 'data.txt',
+		type: 'POST',
+		data: dataToBeSent,
+		success: function () {
+			alert("Your order of "+order.list()+" was confirmed for "+order.frontEnd);
+			alert(dataToBeSent)
+		}
+	})
 	
 }
 
