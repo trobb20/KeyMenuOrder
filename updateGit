@@ -1,6 +1,7 @@
 #!/bin/bash
 
 cd /Users/teddyrobbins/Teddy\'s\ folder/Games\ N\ Stuff/Code\ N\ Stuff/teddySite 
+jekyll build
 
 git add .
 git commit -m "Updated from updateGit"
